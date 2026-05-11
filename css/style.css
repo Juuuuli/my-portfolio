@@ -1840,3 +1840,27 @@ html {
     opacity: 1; /* 滑鼠移入時浮現 */
     transform: translateY(0);
 }
+
+/* 當螢幕寬度小於 768px 時（手機） */
+@media (max-width: 768px) {
+    section {
+        padding: 60px 5%;        
+    }
+    .section-title {
+        font-size: 2rem;           
+        padding-left: 20px;
+    }
+    .hero-right h1 {
+        font-size: 2.5rem;          
+    }
+    .project-card {
+        padding: 20px;
+        min-width: 100%;
+    }
+    .menu {
+        gap: 15px;
+    }
+    .menu a {
+        font-size: 0.85rem;
+    }
+}
