@@ -23,7 +23,56 @@
 
         -webkit-font-smoothing:antialiased;
     }
-    
+
+    /* --- 自動適應手機與平板的通用樣式 --- */
+@media screen and (max-width: 1024px) {
+    /* 1. 將左右兩欄式的佈局改為垂直上下排 */
+    .main-layout-container {
+        flex-direction: column !important;
+        align-items: center !important;
+        width: 95% !important;
+        margin: 20px auto !important;
+        gap: 40px !important;
+    }
+
+    .left-column, .right-column {
+        width: 100% !important;
+        max-width: 100% !important;
+        flex: none !important;
+        position: static !important; /* 移除 sticky 定位，讓手機版正常捲動 */
+    }
+
+    /* 2. 調整 Hero 首頁區塊 */
+    .hero {
+        flex-direction: column !important;
+        text-align: center !important;
+        padding: 40px 20px !important;
+    }
+
+    /* 3. 調整技能進度條與雷達圖，避免在窄螢幕上溢出 */
+    .skills-container {
+        grid-template-columns: 1fr !important; /* 手機上一排一個技能 */
+    }
+
+    .radar-chart {
+        width: 100% !important;
+        max-width: 300px;
+        margin: 0 auto;
+    }
+
+    /* 4. 彈窗 (Modal) 在不同手機上的通用適應 */
+    .modal-content {
+        width: 92% !important;
+        max-height: 85vh !important;
+        padding: 20px !important;
+        overflow-y: auto; /* 確保內容太長時可以內部捲動 */
+    }
+
+    /* 彈窗圖片改為垂直排列 */
+    .modal-visual-group {
+        flex-direction: column !important;
+    }
+}
 
     section{
         min-height:auto;
