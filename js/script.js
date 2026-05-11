@@ -17,25 +17,6 @@
 
   });
 
-document.addEventListener('DOMContentLoaded', () => {
-    const toggleBtn = document.getElementById('view-toggle-btn');
-    const body = document.body;
-
-    toggleBtn.addEventListener('click', () => {
-        // 切換 force-mobile 類別
-        body.classList.toggle('force-mobile');
-        
-        // 更新按鈕文字
-        if (body.classList.contains('force-mobile')) {
-            toggleBtn.textContent = '切換至電腦版介面';
-        } else {
-            toggleBtn.textContent = '切換至手機版介面';
-        }
-        
-        // 切換後自動滾動到頂部以便觀察
-        window.scrollTo({ top: 0, behavior: 'smooth' });
-    });
-});
 
   // =========================
   // 打字機動畫
