@@ -10,6 +10,10 @@
       scroll-behavior:smooth;
     }
 
+    body, html {
+    height: auto;
+    }
+
     body{
         background:#0f172a;
         color:white;
