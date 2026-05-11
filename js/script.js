@@ -275,27 +275,28 @@ document.addEventListener("DOMContentLoaded", () => {
 
 function openModal(modalId) {
     const modal = document.getElementById(modalId);
-    modal.style.display = 'flex';
-    
-    // 同時鎖定 html 與 body，徹底防止背景在彈窗開啟時滑動
-    document.documentElement.style.overflow = 'hidden';
-    document.body.style.overflow = 'hidden';
+    if (modal) {
+        modal.style.display = 'flex';
+        
+        document.documentElement.style.overflow = 'hidden';
+        document.body.style.overflow = 'hidden';
+    }
 }
 
 function closeModal(modalId) {
     const modal = document.getElementById(modalId);
-    modal.classList.add('modal-closing');
+    if (modal) {
+        modal.classList.add('modal-closing');
 
-    setTimeout(() => {
-        modal.style.display = 'none';
-        modal.classList.remove('modal-closing');
-        
-        // 恢復捲動
-        document.documentElement.style.overflow = 'auto';
-        document.body.style.overflow = 'auto';
-    }, 400); 
+        setTimeout(() => {
+            modal.style.display = 'none';
+            modal.classList.remove('modal-closing');
+
+            document.documentElement.style.overflow = 'auto';
+            document.body.style.overflow = 'auto';
+        }, 400); 
+    }
 }
-
 // 選配：按 Esc 鍵也可以關閉彈窗
 window.onkeydown = function(event) {
     if (event.key === "Escape") {
