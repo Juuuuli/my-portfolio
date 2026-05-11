@@ -24,55 +24,6 @@
         -webkit-font-smoothing:antialiased;
     }
     
-    /* 切換按鈕的樣式 */
-.view-toggle-btn {
-    padding: 8px 15px;
-    background: rgba(59, 130, 246, 0.2);
-    border: 1px solid #3b82f6;
-    color: #93c5fd;
-    border-radius: 8px;
-    cursor: pointer;
-    font-size: 0.8rem;
-    transition: 0.3s;
-    z-index: 1001;
-}
-
-.view-toggle-btn:hover {
-    background: #3b82f6;
-    color: white;
-}
-
-/* --- 強制切換核心邏輯 --- */
-/* 當 body 帶有 .force-mobile 類別時，強制覆蓋電腦版樣式 */
-body.force-mobile .main-layout-container {
-    flex-direction: column !important;
-    align-items: center !important;
-}
-
-body.force-mobile .left-column, 
-body.force-mobile .right-column {
-    width: 100% !important;
-    max-width: 100% !important;
-    flex: none !important;
-}
-
-body.force-mobile .hero {
-    flex-direction: column !important;
-    text-align: center !important;
-}
-
-body.force-mobile .modal-content {
-    width: 95% !important;
-    padding: 20px !important;
-}
-
-body.force-mobile .modal-visual-group {
-    flex-direction: column !important;
-}
-
-body.force-mobile .menu {
-    display: none !important; /* 手機版通常隱藏桌面選單 */
-}
 
     section{
         min-height:auto;
