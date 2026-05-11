@@ -278,8 +278,10 @@ function openModal(modalId) {
     if (modal) {
         modal.style.display = 'flex';
         
-        document.documentElement.style.overflow = 'hidden';
-        document.body.style.overflow = 'hidden';
+        // 強制鎖定背景，並防止觸控穿透
+        document.body.style.position = 'fixed';
+        document.body.style.width = '100%';
+        document.body.style.top = `-${window.scrollY}px`; // 記錄目前捲動位置
     }
 }
 
@@ -291,9 +293,12 @@ function closeModal(modalId) {
         setTimeout(() => {
             modal.style.display = 'none';
             modal.classList.remove('modal-closing');
-
-            document.documentElement.style.overflow = 'auto';
-            document.body.style.overflow = 'auto';
+            
+            // 恢復背景狀態與捲動位置
+            const scrollY = document.body.style.top;
+            document.body.style.position = '';
+            document.body.style.top = '';
+            window.scrollTo(0, parseInt(scrollY || '0') * -1);
         }, 400); 
     }
 }
