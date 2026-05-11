@@ -1841,26 +1841,46 @@ html {
     transform: translateY(0);
 }
 
-/* 當螢幕寬度小於 768px 時（手機） */
+/* 針對手機裝置的調整 */
 @media (max-width: 768px) {
-    section {
-        padding: 60px 5%;        
+    .modal-content {
+        width: 95% !important;
+        padding: 20px !important; /* 減少內距讓空間變大 */
+        margin: 10px;
     }
-    .section-title {
-        font-size: 2rem;           
-        padding-left: 20px;
+
+    .modal-header h2 {
+        font-size: 1.3rem !important; /* 縮小標題字體 */
     }
+
+    /* 關鍵：讓圖片在手機上改為垂直排列，不再並排 */
+    .modal-visual-group {
+        flex-direction: column !important;
+        gap: 15px !important;
+    }
+
+    .img-wrapper {
+        width: 100% !important;
+    }
+
+    .modal-img-small {
+        max-height: 250px !important; /* 限制高度避免占滿螢幕 */
+    }
+}
+
+@media (max-width: 480px) {
     .hero-right h1 {
-        font-size: 2.5rem;          
+        font-size: 2.2rem !important; /* 讓名字縮小一點 */
     }
-    .project-card {
-        padding: 20px;
-        min-width: 100%;
+
+    .hero-buttons {
+        flex-direction: column; /* 按鈕改為上下排，避免太擠 */
+        gap: 10px;
+        width: 100%;
     }
-    .menu {
-        gap: 15px;
-    }
-    .menu a {
-        font-size: 0.85rem;
+
+    .btn {
+        width: 100%;
+        text-align: center;
     }
 }
