@@ -1901,6 +1901,30 @@ html {
     transform: translateY(0);
 }
 
+/* 磚塊容器 */
+.features-grid {
+    display: grid;
+    /* 核心邏輯：預設四個一排，每個佔 1/4 寬度 */
+    grid-template-columns: repeat(4, 1fr); 
+    gap: 20px; /* 磚塊之間的間距 */
+    width: 100%;
+    padding: 20px 0;
+}
+
+/* 磚塊本體樣式調整 */
+.feature-item {
+    background: rgba(30, 41, 59, 0.5); /* 配合您網站的深色調 */
+    padding: 30px 20px;
+    border-radius: 15px;
+    text-align: center;
+    transition: transform 0.3s ease;
+    
+    /* 確保內容不會溢出 */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
 /* --- 自動適應手機與平板的通用樣式 --- */
 @media screen and (max-width: 1024px) {
     /* 1. 將左右兩欄式的佈局改為垂直上下排 */
@@ -1910,6 +1934,11 @@ html {
         width: 95% !important;             /* 撐開寬度 */
         margin: 20px auto !important;
         gap: 40px !important;
+    }
+
+  .features-grid {
+        grid-template-columns: repeat(2, 1fr); /* 👈 維持兩個並排 */
+        gap: 15px;
     }
 
     .left-column, .right-column {
@@ -1948,5 +1977,22 @@ html {
     /* 彈窗圖片由橫向改為垂直排列，解決重疊問題 */
     .modal-visual-group {
         flex-direction: column !important;
+    }
+}
+
+/* 當螢幕寬度小於 480px (超窄手機) 時 */
+@media screen and (max-width: 480px) {
+    .features-grid {
+        /* 如果您堅持要並排，這裡繼續維持 repeat(2, 1fr) */
+        /* 但建議微調字體大小，避免文字擠成一團 */
+        grid-template-columns: repeat(2, 1fr); 
+    }
+    
+    .feature-item h3 {
+        font-size: 1rem; /* 縮小標題字體 */
+    }
+    
+    .feature-item p {
+        font-size: 0.85rem; /* 縮小描述字體 */
     }
 }
