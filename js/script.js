@@ -1,23 +1,3 @@
-
-  // =========================
-  // 下拉選單
-  // =========================
-
-  const dropdowns = document.querySelectorAll(".dropdown-card");
-
-  dropdowns.forEach(card => {
-
-    const header = card.querySelector(".dropdown-header");
-
-    header.addEventListener("click", () => {
-
-      card.classList.toggle("active");
-
-    });
-
-  });
-
-
   // =========================
   // 打字機動畫
   // =========================
