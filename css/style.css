@@ -499,6 +499,28 @@
     transform: scale(1.05);
 }
 
+/* --- 響應式調整 (RWD) --- */
+
+/* 當螢幕寬度小於 1200px (例如平板或筆電)，變為兩個一排 */
+@media screen and (max-width: 1200px) {
+    .card-grid {
+        grid-template-columns: repeat(2, 1fr) !important;
+    }
+}
+
+/* 當螢幕寬度小於 480px (手機)，如果你仍堅持並排 */
+@media screen and (max-width: 480px) {
+    .card-grid {
+        grid-template-columns: repeat(2, 1fr) !important;
+        gap: 15px; /* 手機上間距縮小一點點 */
+    }
+    
+    /* 為了在並排時字體不重疊，稍微縮小標題 */
+    .card h3 {
+        font-size: 1rem !important;
+    }
+}
+
 /* 保持標題與段落顏色 */
 .card h3, .card-back h4 {
     margin-bottom: 15px;
