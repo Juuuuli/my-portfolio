@@ -253,35 +253,65 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 
 });
+// 全域變數，記錄原本 scroll 位置
+let savedScrollY = 0;
 
-function openModal(modalId) {
-    const modal = document.getElementById(modalId);
-    if (modal) {
-        modal.style.display = 'flex';
-        
-        // 強制鎖定背景，並防止觸控穿透
-        document.body.style.position = 'fixed';
-        document.body.style.width = '100%';
-        document.body.style.top = `-${window.scrollY}px`; // 記錄目前捲動位置
+// 開啟 Modal
+function openModal(modalId, event) {
+    if (event) {
+        event.preventDefault();
     }
+
+    const modal = document.getElementById(modalId);
+    if (!modal) return;
+
+    // 記錄目前捲動位置
+    savedScrollY = window.scrollY;
+
+    // 顯示 modal
+    modal.style.display = "flex";
+
+    // 避免背景滾動 + 防止頁面跳動
+    document.body.style.position = "fixed";
+    document.body.style.top = `-${savedScrollY}px`;
+    document.body.style.left = "0";
+    document.body.style.right = "0";
+    document.body.style.width = "100%";
+    document.body.style.overflowY = "scroll";
+
+    // modal內容回到頂部
+    modal.scrollTop = 0;
 }
 
+
+// 關閉 Modal
 function closeModal(modalId) {
     const modal = document.getElementById(modalId);
-    if (modal) {
-        modal.classList.add('modal-closing');
+    if (!modal) return;
 
-        setTimeout(() => {
-            modal.style.display = 'none';
-            modal.classList.remove('modal-closing');
-            
-            // 恢復背景狀態與捲動位置
-            const scrollY = document.body.style.top;
-            document.body.style.position = '';
-            document.body.style.top = '';
-            window.scrollTo(0, parseInt(scrollY || '0') * -1);
-        }, 400); 
-    }
+    // 加入關閉動畫
+    modal.classList.add("modal-closing");
+
+    setTimeout(() => {
+        // 隱藏 modal
+        modal.style.display = "none";
+        modal.classList.remove("modal-closing");
+
+        // 恢復 body
+        document.body.style.position = "";
+        document.body.style.top = "";
+        document.body.style.left = "";
+        document.body.style.right = "";
+        document.body.style.width = "";
+        document.body.style.overflowY = "";
+
+        // 回到原本位置
+        window.scrollTo({
+            top: savedScrollY,
+            behavior: "instant"
+        });
+
+    }, 400); // 要跟你的動畫秒數一致
 }
 // 選配：按 Esc 鍵也可以關閉彈窗
 window.onkeydown = function(event) {
