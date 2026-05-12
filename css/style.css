@@ -754,45 +754,9 @@
     margin-bottom: 0;
 }
 
-.dropdown-card {
-    flex: 1; /* 讓兩個選單平分寬度 */
-    margin-bottom: 0; /* 移除原本的底部間距 */
-    border-radius: 20px;
-    background: rgba(255, 255, 255, 0.03);
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    transition: all 0.3s ease;
-}
-
-.dropdown-header{
-
-  padding:25px 30px;
-
-  cursor:pointer;
-
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-
-  font-size:1.2rem;
-  font-weight:600;
-
-  transition:0.3s;
-}
-
 .dropdown-card:hover {
     border-color: #3b82f6;
     box-shadow: 0 0 20px rgba(59, 130, 246, 0.15);
-}
-
-.dropdown-content{
-
-  max-height:0;
-
-  overflow:hidden;
-
-  transition:max-height 0.5s ease;
-
-  padding:0 30px;
 }
 
 .dropdown-header {
@@ -922,6 +886,47 @@
     flex-direction: column;
     gap: 20px;
     justify-content: space-between; /* 讓兩個選單平分右側高度 */
+    margin-top: 30px;
+    align-items: stretch;
+}
+
+.static-info-card {
+    flex: 1;
+    border-radius: 20px;
+    background: rgba(255, 255, 255, 0.03); /* 保持原本的半透明底色 */
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    transition: all 0.3s ease;
+}
+
+.static-info-header {
+    padding: 20px 25px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: #93c5fd; /* 保持你設定的亮藍色標題 */
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05); /* 增加細分隔線 */
+}
+
+.static-info-content {
+    padding: 20px 25px; /* 直接顯示內容，不再使用 max-height */
+}
+
+.static-info-content p {
+    line-height: 2.2; /* 延用原本舒服的行高 */
+    color: #cbd5e1;
+    font-size: 0.95rem;
+}
+
+/* 懸停效果保持一致 */
+.static-info-card:hover {
+    border-color: #3b82f6;
+    box-shadow: 0 0 20px rgba(59, 130, 246, 0.15);
+}
+
+/* 針對 iPhone 13 / 手機版調整：改為上下排列 */
+@media screen and (max-width: 768px) {
+    .dropdown-group {
+        flex-direction: column;
+    }
 }
 
 /* 確保所有外層都沒有寬度限制 */
