@@ -8,6 +8,7 @@
 
     html{
       scroll-behavior:smooth;
+      scrollbar-gutter: stable;
     }
 
     body, html {
@@ -1440,8 +1441,15 @@ body.modal-open {
 
     z-index: 2147483647 !important;
 
+    /* 解決卡到 Menu 的設定 */
     justify-content: center;
-    align-items: center;
+    align-items: flex-start; /* 讓內容從頂部開始排，不要死守中央 */
+    padding-top: 100px;      /* 👈 預留出頂部 Menu 的高度 (依據你的導覽列調整) */
+    overflow-y: auto;        /* 內容過長時可捲動 */
+}
+
+/* 只有當 display 為 flex 時才執行淡入動畫 */
+.modal-overlay[style*="display: flex"] {
     animation: modal-fade-in 0.4s ease-out forwards;
 }
 
@@ -1456,11 +1464,13 @@ body.modal-open {
     position: relative;
     z-index: 100000;
     color: white;
-    box-shadow: border-box;
-    max-height: 90vh;           /* 高度不超過螢幕的 90% */
+  
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
     display: flex;
-    flex-direction: column;     /* 讓標題固定，內容滾動 */
-    overflow: hidden;           /* 隱藏主容器溢出 */
+    flex-direction: column; 
+    
+    /* 讓內容動畫跟著 display 切換 */
+    animation: content-zoom-in 0.4s cubic-bezier(0.165, 0.84, 0.44, 1) forwards;
 }
 
 /* 關閉時的平滑動畫 */
