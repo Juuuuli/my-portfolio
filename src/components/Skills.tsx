@@ -1,4 +1,3 @@
-import React from 'react';
 import { skills } from '../data/portfolioData';
 import { motion } from 'framer-motion';
 

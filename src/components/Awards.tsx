@@ -1,4 +1,3 @@
-import React from 'react';
 import { awards } from '../data/portfolioData';
 import { motion } from 'framer-motion';
 import { Trophy, Award, Medal, Star } from 'lucide-react';

@@ -1,9 +1,6 @@
-import React from 'react';
 import { motion } from 'framer-motion';
 
 export default function Activities() {
-  const images = Array.from({ length: 15 }, (_, i) => `images/Activity/activity${i + 1}.` + (i >= 11 || [1,3,7,8,13,14].includes(i) ? 'JPG' : 'jpg'));
-  
   // Quick fix for extensions since some are .jpg and some are .JPG
   // activity1.jpg, activity2.JPG, activity3.jpg, activity4.JPG, activity5.jpg, activity6.jpg, activity7.jpg, activity8.JPG, activity9.JPG, activity10.jpg, activity11.jpg, activity12.JPG, activity13.JPG, activity14.JPG, activity15.JPG
   // Just let the browser load them, if it fails, maybe case insensitive on windows, but github pages is case sensitive!
