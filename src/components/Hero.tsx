@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { personalInfo } from '../data/portfolioData';
 import { motion } from 'framer-motion';
 import { GraduationCap, Phone, Mail, Building } from 'lucide-react';
